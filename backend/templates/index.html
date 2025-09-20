@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interpolation Studio</title>
+    <link rel="stylesheet" href="/frontend/styles/main.css">
+</head>
+<body>
+    <div class="workspace">
+        <!-- Control Panel -->
+        <div class="control-panel">
+            <div class="panel-header">
+                <h1>PromptNAVI</h1>
+                <p>Generate and interpolate images using AI</p>
+            </div>
+            <div class="prompt-section">
+                <textarea id="prompt-input" class="prompt-input"
+                    placeholder="Describe the image you want to generate..."></textarea>
+                <div class="button-group">
+                    <button id="generate-btn" class="button primary">
+                        <span class="icon">🎨</span>
+                        Generate Image
+                    </button>
+                    <button id="empty-frame-btn" class="button secondary">
+                        <span class="icon">✨</span>
+                        Add Empty Frame
+                    </button>
+                </div>
+            </div>
+            <div class="toolbar">
+                <button id="clear-btn" class="toolbar-button">
+                    <span class="icon">🗑️</span>
+                    Clear
+                </button>
+                <button id="undo-btn" class="toolbar-button" disabled>
+                    <span class="icon">↩️</span>
+                    Undo
+                </button>
+                <button id="redo-btn" class="toolbar-button" disabled>
+                    <span class="icon">↪️</span>
+                    Redo
+                </button>
+            </div>
+            <div class="settings-panel">
+                <h3>Generation Settings</h3>
+                <div class="settings-list">
+                    <div class="settings-item">
+                        <label for="model-select">Model</label>
+                        <select id="model-select">
+                            <option value="dall-e-2">DALL-E 2</option>
+                            <option value="dall-e-3">DALL-E 3</option>
+                            <option value="stable-diffusion">Stable Diffusion</option>
+                        </select>
+                    </div>
+                    <div class="settings-item">
+                        <label for="size-select">Image Size</label>
+                        <select id="size-select">
+                            <option value="256x256">256x256</option>
+                            <option value="512x512">512x512</option>
+                            <option value="1024x1024">1024x1024</option>
+                        </select>
+                    </div>
+                    <div class="settings-item">
+                        <label for="quality-select">Quality</label>
+                        <select id="quality-select">
+                            <option value="standard">Standard</option>
+                            <option value="hd">HD</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="quick-tips">
+                <h3>Quick Tips</h3>
+                <ul>
+                    <li>Click attributes to expand/collapse</li>
+                    <li>Connect attributes by dragging</li>
+                    <li>Adjust strength with sliders</li>
+                    <li>Generate when 2+ attributes connected</li>
+                </ul>
+            </div>
+        </div>
+        <!-- Canvas Container -->
+        <div id="canvas-container" class="canvas-container"></div>
+    </div>
+    <!-- Loading Overlay -->
+    <div id="loading" class="loading" style="display: none;">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Generating image...</div>
+    </div>
+    <!-- Notification Area -->
+    <div id="notifications" class="notifications"></div>
+    <!-- Scripts -->
+    <script type="module">
+        import App from '/frontend/scripts/main.js';
+        document.addEventListener('DOMContentLoaded', () => {
+            new App();
+        });
+    </script>
+</body>
+</html>
